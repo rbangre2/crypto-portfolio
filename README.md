@@ -6,7 +6,7 @@ First, run the development server:
 
 <img width="1512" alt="Screen Shot 2024-11-30 at 5 09 15 AM" src="https://github.com/user-attachments/assets/5647473b-d70d-43ad-9317-fcfc69a78d55">
 
-quick way to graph and track profit since coinbase doesn't let you easily see this on a per asset view
+quick way to graph and track profit since coinbase doesn't let you easily see this on a per asset view. uses coinmarket cap api
 ```bash
 npm run dev
 # or
