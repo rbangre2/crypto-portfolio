@@ -2,6 +2,7 @@ import { NextResponse } from "next/server";
 
 const COINMARKETCAP_API_KEY = process.env.COINMARKETCAP_API_KEY;
 const BASE_URL = "https://pro-api.coinmarketcap.com/v1";
+const USD_TO_CAD = 1.4;
 
 export async function GET() {
   try {
@@ -19,7 +20,7 @@ export async function GET() {
       id: crypto.id,
       name: crypto.name,
       symbol: crypto.symbol,
-      currentPrice: crypto.quote.USD.price,
+      currentPrice: crypto.quote.USD.price * USD_TO_CAD,
     }));
 
     return NextResponse.json(cryptos);

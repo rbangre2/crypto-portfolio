@@ -45,12 +45,12 @@ export default function AssetTable({ assets, onDelete }: AssetTableProps) {
           <tr className="border-b border-gray-700">
             <th className="p-4 text-left">Asset</th>
             <th className="p-4 text-left">Date Bought</th>
-            <th className="p-4 text-left">Purchase Price</th>
-            <th className="p-4 text-left">Current Price</th>
+            <th className="p-4 text-left">Purchase Price (CAD)</th>
+            <th className="p-4 text-left">Current Price (CAD)</th>
             <th className="p-4 text-left">Quantity</th>
-            <th className="p-4 text-left">Total Invested</th>
-            <th className="p-4 text-left">Current Value</th>
-            <th className="p-4 text-left">Profit/Loss</th>
+            <th className="p-4 text-left">Total Invested (CAD)</th>
+            <th className="p-4 text-left">Current Value (CAD)</th>
+            <th className="p-4 text-left">Profit/Loss (CAD)</th>
             <th className="p-4 text-left">Actions</th>
           </tr>
         </thead>

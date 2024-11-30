@@ -112,47 +112,43 @@ export default function PortfolioGraph({ data }: PortfolioGraphProps) {
     datasets: datasets,
   };
 
+  const options = {
+    responsive: true,
+    maintainAspectRatio: false,
+    plugins: {
+      legend: {
+        position: "top" as const,
+        labels: {
+          color: "#E0E0E0",
+        },
+      },
+      title: {
+        display: true,
+        text: "Asset Profit/Loss Over Time (CAD)",
+        color: "#E0E0E0",
+      },
+    },
+    scales: {
+      x: {
+        grid: { color: "#2E2E2E" },
+        ticks: { color: "#E0E0E0" },
+      },
+      y: {
+        grid: { color: "#2E2E2E" },
+        ticks: {
+          color: "#E0E0E0",
+          callback: function (value: number) {
+            return `$${value.toFixed(2)} CAD`;
+          },
+        },
+      },
+    },
+  };
+
   return (
     <div className="space-y-4">
       <div className="h-[400px]">
-        <Line
-          data={chartData}
-          options={{
-            responsive: true,
-            maintainAspectRatio: false,
-            plugins: {
-              legend: {
-                position: "top" as const,
-                labels: {
-                  color: "#E0E0E0",
-                },
-              },
-              title: {
-                display: true,
-                text: "Asset Profit/Loss Over Time",
-                color: "#E0E0E0",
-              },
-            },
-            scales: {
-              x: {
-                grid: {
-                  color: "#2E2E2E",
-                },
-                ticks: {
-                  color: "#E0E0E0",
-                },
-              },
-              y: {
-                grid: {
-                  color: "#2E2E2E",
-                },
-                ticks: {
-                  color: "#E0E0E0",
-                },
-              },
-            },
-          }}
-        />
+        <Line data={chartData} />
       </div>
     </div>
   );
