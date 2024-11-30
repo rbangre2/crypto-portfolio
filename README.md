@@ -4,6 +4,9 @@ This is a [Next.js](https://nextjs.org) project bootstrapped with [`create-next-
 
 First, run the development server:
 
+<img width="1512" alt="Screen Shot 2024-11-30 at 5 08 22 AM" src="https://github.com/user-attachments/assets/c785813c-7016-4393-8dba-053f0e48ca93">
+
+quick way to graph and track profit since coinbase doesn't let you easily see this on a per asset view
 ```bash
 npm run dev
 # or
