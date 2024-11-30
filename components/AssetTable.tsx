@@ -34,26 +34,21 @@ export default function AssetTable({ assets, onDelete }: AssetTableProps) {
     };
 
     fetchCurrentPrices();
-    const interval = setInterval(fetchCurrentPrices, 60000); // Update every minute
+    const interval = setInterval(fetchCurrentPrices, 60000);
     return () => clearInterval(interval);
   }, []);
-
-  if (assets.length === 0) {
-    return (
-      <div className="bg-surface p-6 rounded-lg text-center">
-        No assets added yet. Use the form above to add your first asset.
-      </div>
-    );
-  }
 
   return (
     <div className="overflow-x-auto">
       <table className="w-full bg-surface rounded-lg">
         <thead>
           <tr className="border-b border-gray-700">
-            <th className="p-4 text-left">Asset Name</th>
+            <th className="p-4 text-left">Asset</th>
             <th className="p-4 text-left">Date Bought</th>
-            <th className="p-4 text-left">Price Paid</th>
+            <th className="p-4 text-left">Purchase Price</th>
+            <th className="p-4 text-left">Current Price</th>
+            <th className="p-4 text-left">Quantity</th>
+            <th className="p-4 text-left">Total Invested</th>
             <th className="p-4 text-left">Current Value</th>
             <th className="p-4 text-left">Profit/Loss</th>
             <th className="p-4 text-left">Actions</th>
@@ -63,11 +58,10 @@ export default function AssetTable({ assets, onDelete }: AssetTableProps) {
           {assets.map((asset, index) => {
             const currentPrice =
               currentPrices[asset.cryptoId] || asset.pricePaid;
+            const totalInvested = asset.pricePaid * asset.quantity;
             const currentValue = currentPrice * asset.quantity;
-            const profitLoss =
-              (currentPrice - asset.pricePaid) * asset.quantity;
-            const profitLossPercentage =
-              (profitLoss / (asset.pricePaid * asset.quantity)) * 100;
+            const profitLoss = currentValue - totalInvested;
+            const profitLossPercentage = (profitLoss / totalInvested) * 100;
 
             return (
               <tr
@@ -80,6 +74,9 @@ export default function AssetTable({ assets, onDelete }: AssetTableProps) {
                 <td className="p-4">{asset.name}</td>
                 <td className="p-4">{format(asset.dateBought, "PP")}</td>
                 <td className="p-4">${asset.pricePaid.toFixed(2)}</td>
+                <td className="p-4">${currentPrice.toFixed(2)}</td>
+                <td className="p-4">{asset.quantity}</td>
+                <td className="p-4">${totalInvested.toFixed(2)}</td>
                 <td className="p-4">${currentValue.toFixed(2)}</td>
                 <td
                   className={`p-4 ${
